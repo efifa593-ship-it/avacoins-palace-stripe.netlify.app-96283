@@ -1,148 +1,327 @@
+<h1>loja 100% confiavel</h3>
+<!-- end list -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Avacoins Palace - 20K</title>
-  <script src="https://js.stripe.com/v3/"></script>
-  <style>
-    :root{--bg:#020617;--card:#0f172a;--text:#e5e7eb;--green:#22c55e;--gray:#94a3b8}
-    *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,sans-serif}
-    body{background:var(--bg);color:var(--text);padding:16px;min-height:100vh}
-    .container{max-width:1200px;margin:0 auto}
-    header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:24px}
-    .logo{display:flex;align-items:center;gap:12px}
-    .logo img{width:56px;height:56px;border-radius:50%;border:2px solid white;object-fit:cover}
-    .logo h1{font-size:1.5rem;color:white}
-    .logo p{font-size:0.9rem;color:var(--gray)}
-    .btn-top{background:#1f2937;color:white;padding:10px 16px;border-radius:999px;border:none;cursor:pointer;font-weight:600}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Avacoins Palace • 20K</title>
+<style>
+:root{--bg:#0f0a1f;--card:#1a1033;--text:#e2e8f0;--green:#10b981;--purple:#a78bfa;--gray:#64748b}
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,sans-serif}
+body{background:var(--bg);color:var(--text);min-height:100dvh;position:relative}
+.container{max-width:420px;margin:0 auto;padding:16px}
+header{text-align:center;margin:32px 0 20px}
+.logo-img{width:70px;height:70px;border-radius:50%;border:3px solid var(--purple);box-shadow:0 0 20px #a78bfa50}
+h1{font-size:1.9rem;font-weight:800;background:linear-gradient(135deg,#a78bfa,#10b981);-webkit-background-clip:text;background-clip:text;color:transparent}
+.card{background:var(--card);border-radius:20px;padding:22px;box-shadow:0 15px 40px #0009;border:1px solid #2d1b4d}
+.tag{background:var(--green);color:#064e3b;padding:6px 14px;border-radius:50px;font-weight:700;font-size:0.85rem}
+.price{font-size:2.5rem;font-weight:900;color:var(--green);margin:14px 0}
+.btn{width:100%;padding:16px;border-radius:16px;font-weight:800;cursor:pointer;margin:10px 0;transition:0.2s}
+.btn-buy{background:linear-gradient(135deg,#10b981,#059669);color:white;font-size:1.35rem;box-shadow:0 8px 25px #10b98160}
+.btn-pix{background:#2d1b4d;color:var(--purple);font-size:1.1rem;border:2px solid var(--purple)}
+.btn-clear-history{background:#ff6347;color:white;border:2px solid #ff6347;margin-top:5px;}
+.btn-esgotado {
+    background: #6c757d !important;
+    cursor: not-allowed !important;
+    box-shadow: none !important;
+}
+.btn:active{transform:scale(0.97)}
 
-    .layout{display:grid;grid-template-columns:1fr 340px;gap:20px}
-    @media(max-width:860px){.layout{grid-template-columns:1fr}}
-
-    .card{background:var(--card);border:1px solid #1f2937;border-radius:16px;padding:20px;box-shadow:0 10px 30px rgba(0,0,0,0.6)}
-    .tag{background:var(--green);color:#052e16;padding:6px 12px;border-radius:999px;font-size:0.8rem;font-weight:700;display:inline-block}
-    .price{font-size:2rem;font-weight:800;color:var(--green);margin:16px 0}
-    .field{display:flex;align-items:center;gap:12px;margin:16px 0;flex-wrap:wrap}
-    .field input{width:100px;padding:10px;background:#020617;border:1px solid #4b5563;color:white;text-align:center;border-radius:999px}
-    .btn-buy{width:100%;background:linear-gradient(135deg,#22c55e,#16a34a);color:white;padding:16px;font-size:1.2rem;border:none;border-radius:999px;box-shadow:0 10px 30px rgba(34,197,94,0.4);cursor:pointer;transition:0.2s}
-    .btn-buy:hover{transform:translateY(-3px)}
-
-    #carrinho{position:sticky;top:16px}
-    .resumo{margin:16px 0;font-size:1.1rem;line-height:1.6}
-
-    .modal{position:fixed;inset:0;background:rgba(0,0,0,0.95);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
-    .modal-box{background:var(--card);border-radius:16px;padding:24px;max-width:500px;width:100%;border:1px solid #1f2937}
-    .close{float:right;background:none;color:var(--gray);font-size:2rem;border:none;cursor:pointer}
-    code{background:#1e293b;padding:4px 8px;border-radius:6px;font-size:0.9rem}
-    .hint{font-size:0.85rem;color:var(--gray);margin-top:12px}
-    #loading{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:200;justify-content:center;align-items:center}
-    .spinner{width:50px;height:50px;border:5px solid #f3f3f3;border-top:5px solid var(--green);border-radius:50%;animation:spin 1s linear infinite}
-    @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
-  </style>
+/* Estilos da Área ADM */
+#admTela{position:fixed;inset:0;background:rgba(0,0,0,0.95);display:none;align-items:center;justify-content:center;z-index:1000;flex-direction:column;color:var(--text);padding:20px}
+#admConteudo{background:var(--card);padding:25px;border-radius:20px;width:100%;max-width:400px;text-align:center}
+#admConteudo h2{color:var(--purple);margin-bottom:15px}
+#areaContas, #inputNovoPreco{width:100%;padding:10px;background:#0f0a1f;border:1px solid var(--purple);color:white;margin-bottom:10px;border-radius:10px;box-sizing:border-box}
+#areaContas{height:100px;}
+.btn-adm{width:100%;padding:12px;border-radius:10px;font-weight:700;cursor:pointer;margin:5px 0;transition:0.2s;font-size:1rem}
+.btn-add{background:var(--green);color:#064e3b}
+.btn-limpar{background:#ff6347;color:white}
+.btn-fechar{background:var(--gray);color:white;margin-top:10px}
+.btn-update-price {background: #a78bfa; color: white;}
+</style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="logo">
-        <img src="https://d1fdloi71mui9q.cloudfront.net/b8SgVwrISpOiRT4p17SR_pOF6nXTm7emQbiqJ" alt="Avacoins Palace">
-        <div>
-          <h1>Avacoins Palace</h1>
-          <p>20.000 Avacoins • Entrega imediata</p>
-        </div>
-      </div>
-      <button class="btn-top" onclick="abrirPedidos()">Meus pedidos</button>
-    </header>
 
-    <div class="layout">
-      <main>
-        <div class="card">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <h2>Conta 20.000 Avacoins</h2>
-            <span class="tag">PRONTA ENTREGA</span>
-          </div>
-          <p>Cada conta tem exatamente <strong>20.000 Avacoins</strong> prontos para usar.</p>
-          <div class="price">R$ 6,00 por conta</div>
+<div class="container">
+  <header>
+    <img src="https://d1fdloi71mui9q.cloudfront.net/b8SgVwrISpOiRT4p17SR_pOF6nXTm7emQbiqJ" class="logo-img" alt="Logo">
+    <h1>Avacoins Palace</h1>
+    <p style="color:var(--gray);font-size:0.9rem">20.000 Avacoins • Entrega imediata</p>
+  </header>
 
-          <div class="field">
-            <span>Quantidade:</span>
-            <input type="number" id="qtd" min="1" value="1" onchange="calc()">
-            <strong>Estoque: <span id="estoque">1</span></strong>
-          </div>
-
-          <button class="btn-buy" onclick="pagar()">Pagar com PIX • Cartão • Boleto</button>
-          <p class="hint">Pagamento 100% seguro via Stripe • Entrega automática</p>
-        </div>
-      </main>
-
-      <aside id="carrinho" class="card">
-        <h3>Resumo do pedido</h3>
-        <div class="resumo" id="resumo">Selecione a quantidade</div>
-      </aside>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <h2 style="font-size:1.4rem">Conta 20K</h2>
+      <span class="tag">PRONTA ENTREGA</span>
     </div>
-  </div>
+    <div class="price" id="precoAtual">R$ 6,00</div>
 
-  <!-- Loading -->
-  <div id="loading">
-    <div class="spinner"></div>
-  </div>
-
-  <!-- Modal Meus Pedidos -->
-  <div id="modal" class="modal">
-    <div class="modal-box">
-      <button class="close" onclick="fechar()">×</button>
-      <h3>Minhas Contas Liberadas</h3>
-      <div id="lista" style="margin-top:16px;"></div>
+    <div style="text-align:center;font-size:1.1rem;font-weight:700;margin:16px 0">
+      Estoque: <span id="estoque" style="color:var(--green)">0</span>
     </div>
+
+    <button class="btn btn-buy" id="btnComprar" onclick="iniciarPagamento()">
+      COMPRAR COM PIX R$6,00
+    </button>
+    
+    <button class="btn btn-pix" onclick="abrirPedidos()" style="margin-top:20px">
+      Meus pedidos
+    </button>
+    
+    <button class="btn btn-pix btn-clear-history" onclick="limparHistoricoPedidos()">
+      LIMPAR HISTÓRICO
+    </button>
   </div>
+  
+  <div style="text-align:center; margin-top: 15px;">
+    <button class="btn-pix btn" style="width: 50%; font-size: 0.9rem" onclick="entrarADM()">
+      Área ADM ⚙️
+    </button>
+  </div>
+</div>
 
-  <script>
-    // Stripe com suas chaves LIVE
-    const stripe = Stripe('pk_live_51SaMyoL0CPL2nGCEq5b5YXzDzJ9qgE0rlx2gw4nJYuV7rAAzbhFwNkdGXC9mWhmcN2xiWm4bM2NFumtcyMkUIjmU00JAYTN3Zn');
+<div id="admTela">
+    <div id="admConteudo">
+        <h2>Área Administrativa</h2>
+        
+        <h3 style="color:var(--purple); margin-top: 15px; font-size: 1.1rem;">💰 Alterar Preço</h3>
+        <input type="number" id="inputNovoPreco" placeholder="Novo preço (ex: 7.50)" step="0.01" min="0.01">
+        <button class="btn-adm btn-update-price" onclick="atualizarPreco()">
+            ATUALIZAR PREÇO
+        </button>
 
-    // Suas contas reais (adicione mais no painel depois)
-    let contas = ['ph.a.n.don.g.nhi19.58.5@gmail.com:tiagoSILVA123@'];
-    document.getElementById("estoque").textContent = contas.length;
+        <hr style="border-top: 1px solid #3d2b63; margin: 15px 0;">
 
-    function calc() {
-      const q = parseInt(document.getElementById("qtd").value) || 1;
-      const total = q * 6;
-      document.getElementById("resumo").innerHTML = 
-        `<strong>${q} × Conta 20.000 Avacoins</strong><br>Total: R$ ${total.toFixed(2)}`;
+        <h3 style="color:var(--purple); font-size: 1.1rem;">🚚 Entrega Manual</h3>
+        <p style="color:var(--gray); font-size: 0.9rem; margin-bottom: 5px;">Use APÓS confirmar o pagamento do cliente em seu sistema bancário.</p>
+        <button class="btn-adm btn-add" onclick="confirmarPagamentoEEntregar()">
+            ✅ CONFIRMAR PAGAMENTO E ENTREGAR
+        </button>
+
+        <hr style="border-top: 1px solid #3d2b63; margin: 15px 0;">
+        
+        <h3 style="color:var(--purple); font-size: 1.1rem;">📦 Gerenciar Estoque</h3>
+        <p style="color:var(--green); margin-bottom: 10px;">Estoque atual: <span id="estoqueAdm">0</span> contas</p>
+        
+        <textarea id="areaContas" placeholder="Cole as novas contas aqui (uma por linha, ex: email:senha)"></textarea>
+        
+        <button class="btn-adm btn-add" onclick="adicionarContas()">
+            ➕ ADICIONAR AO ESTOQUE
+        </button>
+        
+        <button class="btn-adm btn-limpar" onclick="limparEstoque()">
+            🗑️ LIMPAR TODO O ESTOQUE
+        </button>
+        
+        <button class="btn-adm btn-fechar" onclick="fecharADM()">
+            FECHAR
+        </button>
+    </div>
+</div>
+
+
+<script>
+// ====================================================================
+// === CONFIGURAÇÕES GERAIS ===
+// ====================================================================
+const LINK_PAGAMENTO = "https://mpago.la/2adR3CR"; 
+const SENHA_ADM = "tiago2025"; 
+// ====================================================================
+
+let preco = parseFloat(localStorage.getItem("avacoins_preco")) || 6.00;
+let contas = JSON.parse(localStorage.getItem("avacoins_estoque") || '["avacoins:secreto123", "avacoins2:senha456"]');
+
+function formatarMoeda(valor) {
+    return 'R$ ' + valor.toFixed(2).replace('.', ',');
+}
+
+function atualizarEstoque() {
+  const count = contas.length;
+  document.getElementById("estoque").textContent = count;
+  const estoqueAdmElement = document.getElementById("estoqueAdm");
+  if (estoqueAdmElement) {
+      estoqueAdmElement.textContent = count;
+  }
+  
+  // Atualiza a aparência e o estado do botão de compra
+  const btnComprar = document.getElementById("btnComprar");
+  if (count === 0) {
+      btnComprar.classList.add('btn-esgotado');
+      btnComprar.textContent = 'ESTOQUE ESGOTADO 😭';
+  } else {
+      btnComprar.classList.remove('btn-esgotado');
+      btnComprar.textContent = `COMPRAR COM PIX ${formatarMoeda(preco)}`;
+  }
+}
+
+function atualizarPrecoUI() {
+    const precoFormatado = formatarMoeda(preco);
+    document.getElementById("precoAtual").textContent = precoFormatado;
+    
+    // Força a atualização do texto do botão de compra
+    const btnComprar = document.getElementById("btnComprar");
+    if (contas.length > 0) {
+        btnComprar.textContent = `COMPRAR COM PIX ${precoFormatado}`;
     }
-    calc();
+}
 
-    async function pagar() {
-      const qtd = parseInt(document.getElementById("qtd").value) || 1;
-      if (qtd > contas.length) return alert(`Só temos ${contas.length} conta(s) no estoque!`);
+/**
+ * NOVO: Verifica se o cliente tem uma compra pendente.
+ */
+function verificarPendencia() {
+    const pendente = localStorage.getItem("compra_pendente");
+    if (pendente === "true") {
+        alert("⚠️ VOCÊ TEM UMA COMPRA PENDENTE! Por favor, volte ao site de pagamento e pague o PIX. Sua conta será liberada em 'Meus Pedidos' APÓS a confirmação do pagamento.");
+    }
+}
 
-      document.getElementById("loading").style.display = "flex";
+// Chama as funções ao carregar
+atualizarEstoque();
+atualizarPrecoUI();
+verificarPendencia(); // Verifica se há pendência ao carregar a página
 
-      try {
-        // Cria sessão no Stripe (back-end necessário - use o PHP abaixo)
-        const response = await fetch('/create-checkout', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ quantidade: qtd })
-        });
-        const { id } = await response.json();
-        stripe.redirectToCheckout({ sessionId: id });
-      } catch (error) {
-        alert('Erro no pagamento. Tente novamente.');
-        document.getElementById("loading").style.display = "none";
-      }
+// ====================================================================
+// === FUNÇÕES DA ÁREA ADMINISTRATIVA ===
+// ====================================================================
+
+function entrarADM() {
+    const senhaDigitada = prompt("Insira a senha do Administrador:");
+    if (senhaDigitada === SENHA_ADM) {
+        document.getElementById('admTela').style.display = 'flex';
+        document.getElementById('inputNovoPreco').value = preco.toFixed(2);
+        atualizarEstoque();
+    } else if (senhaDigitada !== null) {
+        alert("Senha incorreta!");
+    }
+}
+
+function fecharADM() {
+    document.getElementById('admTela').style.display = 'none';
+    document.getElementById('areaContas').value = ''; 
+}
+
+function atualizarPreco() {
+    const novoPrecoTexto = document.getElementById('inputNovoPreco').value;
+    const novoPreco = parseFloat(novoPrecoTexto);
+
+    if (isNaN(novoPreco) || novoPreco <= 0) {
+        return alert("❌ Por favor, insira um preço válido (número maior que zero).");
     }
 
-    function abrirPedidos() {
-      // Lógica igual ao anterior (localStorage)
-      const lista = document.getElementById("lista");
-      // ... (código do modal igual ao anterior)
-      document.getElementById("modal").style.display = "flex";
+    preco = novoPreco;
+    localStorage.setItem("avacoins_preco", preco);
+    atualizarPrecoUI();
+    atualizarEstoque(); 
+    alert(`✅ Preço atualizado com sucesso para ${formatarMoeda(preco)}!`);
+    fecharADM();
+}
+
+function adicionarContas() {
+    const textoContas = document.getElementById('areaContas').value.trim();
+    if (!textoContas) {
+        return alert("Nenhuma conta para adicionar.");
     }
 
-    function fechar() {
-      document.getElementById("modal").style.display = "none";
+    const novasContas = textoContas.split('\n').map(c => c.trim()).filter(c => c.length > 0);
+
+    if (novasContas.length > 0) {
+        contas = contas.concat(novasContas);
+        localStorage.setItem("avacoins_estoque", JSON.stringify(contas));
+        document.getElementById('areaContas').value = ''; 
+        atualizarEstoque();
+        alert(`✅ ${novasContas.length} contas adicionadas com sucesso!`);
+    } else {
+        alert("Nenhuma conta válida encontrada para adicionar.");
     }
-  </script>
+}
+
+function limparEstoque() {
+    if (confirm("⚠️ ATENÇÃO! Tem certeza que deseja REMOVER TODAS as contas do estoque?")) {
+        contas = [];
+        localStorage.setItem("avacoins_estoque", JSON.stringify(contas));
+        atualizarEstoque();
+        alert("✅ Estoque limpo com sucesso!");
+        fecharADM();
+    }
+}
+
+/**
+ * NOVO: Função para o ADM confirmar o pagamento, entregar a conta e limpar o flag de pendência.
+ */
+function confirmarPagamentoEEntregar() {
+    const pendente = localStorage.getItem("compra_pendente");
+    
+    if (contas.length === 0) {
+        alert("❌ Estoque zerado. Não é possível entregar.");
+        return;
+    }
+
+    if (pendente !== "true") {
+        if (!confirm("Atenção: Não há nenhuma compra pendente registrada. Deseja entregar a conta e consumir o estoque mesmo assim?")) {
+            return;
+        }
+    } else if (!confirm("CONFIRMAR: Você tem certeza que o cliente pagou? O próximo item do estoque será consumido e entregue no histórico dele.")) {
+        return;
+    }
+
+    // 1. ENTREGA (Consome a conta do estoque)
+    const conta = contas.shift();
+    localStorage.setItem("avacoins_estoque", JSON.stringify(contas));
+
+    // 2. REGISTRA NO HISTÓRICO DE PEDIDOS (Libera a conta para o cliente)
+    const historico = JSON.parse(localStorage.getItem("avacoins_pedidos") || "[]");
+    historico.push({
+        data: new Date().toLocaleString("pt-BR"), 
+        conta: conta, 
+        status: 'Pago e Entregue Manualmente'
+    });
+    localStorage.setItem("avacoins_pedidos", JSON.stringify(historico));
+
+    // 3. REMOVE A MENSAGEM DE PENDÊNCIA (O cliente não verá mais o aviso)
+    localStorage.removeItem("compra_pendente");
+
+    // 4. ATUALIZA TELA E ALERTA
+    atualizarEstoque();
+    alert(`✅ Conta entregue com sucesso: ${conta}. O flag de pendência foi limpo.`);
+    fecharADM();
+}
+
+// ====================================================================
+// === FUNÇÕES DE VENDAS E PEDIDOS (COM PENDÊNCIA) ===
+// ====================================================================
+
+function iniciarPagamento() {
+  if (contas.length === 0) {
+      alert("❌ ESTOQUE ESGOTADO! Não é possível comprar agora.");
+      return; 
+  }
+  
+  // MARCA a compra como PENDENTE (NÃO ENTREGA A CONTA AINDA)
+  localStorage.setItem("compra_pendente", "true"); 
+  
+  window.open(LINK_PAGAMENTO, "_blank");
+  
+  alert("✅ Compra iniciada! Agora você precisa PAGAR O PIX para liberar a conta. Se você voltar sem pagar, a conta só será liberada APÓS a confirmação do seu pagamento!");
+}
+
+function abrirPedidos() {
+  const lista = JSON.parse(localStorage.getItem("avacoins_pedidos") || "[]");
+  if (lista.length === 0) {
+    return alert("Nenhum pedido resgatado ainda.");
+  }
+  let texto = "SUAS CONTAS LIBERADAS (Histórico Local):\n\n";
+  lista.reverse().forEach(p => texto += `Data: ${p.data}\nConta: ${p.conta}\n\n`);
+  alert(texto);
+}
+
+function limparHistoricoPedidos() {
+    if (confirm("⚠️ ATENÇÃO! Tem certeza que deseja REMOVER TODO o histórico de pedidos resgatados? Esta ação é irreversível e só limpa o histórico local.")) {
+        localStorage.removeItem("avacoins_pedidos");
+        alert("✅ Histórico de pedidos removido com sucesso!");
+    }
+}
+</script>
 </body>
 </html>
+
