@@ -1,5 +1,4 @@
-<h1>loja 100% confiavel</h3>
-<!-- end list -->
+<h1>loja palace</h1>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -125,8 +124,8 @@ h1{font-size:1.9rem;font-weight:800;background:linear-gradient(135deg,#a78bfa,#1
 // ====================================================================
 // === CONFIGURAÇÕES GERAIS ===
 // ====================================================================
-const LINK_PAGAMENTO = "https://mpago.la/2adR3CR"; 
-const SENHA_ADM = "tiago2025"; 
+const LINK_PAGAMENTO = "https://payment-link-v3.ton.com.br/pl_DOeMRAZXN37pkgLUviEvmE54GwPVlqvz"; 
+const SENHA_ADM = "minhasenha123"; 
 // ====================================================================
 
 let preco = parseFloat(localStorage.getItem("avacoins_preco")) || 6.00;
@@ -167,7 +166,7 @@ function atualizarPrecoUI() {
 }
 
 /**
- * NOVO: Verifica se o cliente tem uma compra pendente.
+ * Verifica se o cliente tem uma compra pendente.
  */
 function verificarPendencia() {
     const pendente = localStorage.getItem("compra_pendente");
@@ -247,7 +246,7 @@ function limparEstoque() {
 }
 
 /**
- * NOVO: Função para o ADM confirmar o pagamento, entregar a conta e limpar o flag de pendência.
+ * Função para o ADM confirmar o pagamento, entregar a conta e limpar o flag de pendência.
  */
 function confirmarPagamentoEEntregar() {
     const pendente = localStorage.getItem("compra_pendente");
